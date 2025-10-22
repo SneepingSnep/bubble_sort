@@ -1,3 +1,4 @@
 src/bubble.o
 src/main.o
 main.exe
+src/trial.c
