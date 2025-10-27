@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <stdbool.h>
 #include <time.h>
 
 void bubblesort(array arr) {
@@ -35,7 +35,14 @@ void bubblesort(array arr) {
 void scramble(array arr) {
   srand(time(NULL));
   for (int i = 0; i < SIZE; i++) {
-    arr[i] = rand() % 30;
+    	int PositivOrNegative = rand()%2;
+	//Number beetween 0 and 30
+	int randonumbo = rand() % 30;
+	if (PositivOrNegative == 1)
+	{
+		randonumbo = -randonumbo;
+	}
+	  arr[i] = randonumbo;
   }
 }
 
