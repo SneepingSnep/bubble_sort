@@ -5,7 +5,7 @@ OBJ = $(SRC:.c=.o)
 #Here goes the Linux commad section
 LINUXCC = gcc
 #Find the flags for gcc these below are clang flags
-#CFLAGS = -Wall -Wextra -std=gnu2y -g -Iheaders
+LFLAGS = -Wall -Wextra -std=gnu23 -g -Iheaders
 LINUXDELCMD = rm
 # Source and object files
 LINUXDEL =  ./src/bubble.o  ./src/main.o
@@ -16,7 +16,7 @@ LINUXTARGET1 = gol
 LINUXCLEAN = cleanl
 #Build
 $(LINUXTARGET): $(OBJ)
-	$(LINUXCC) -o $@ $(OBJ)
+	$(LINUXCC) $(LFLAGS) -o $@ $(OBJ)
 
 $(LINUXTARGET1): $(LINUXOBJ1)
 	$(LINUXOBJ1)
