@@ -1,54 +1,53 @@
-
-# main:
-# # 	clang -Wall -Wextra -std=gnu2y -g -o main src/main.c src/caesar.c src/vigenere.c
-# 	clang -c src/main.c src/caesar.c src/vigenere.c 
-# 	clang -o main caesar.o vigenere.o main.o
-#clang -Wall -Wextra -std=gnu2y -g -o main caesar.o vigenere.o main.o
-	
-
-# Clean up
-# clean:
-# 	rm -f main
-
-
-# CC = clang
-# CFLAGS = -Wall -Wextra -std=gnu2y -g
-# OBJS = caesar.o vigenere.o
-
-# all: main
-
-# main: $(OBJS)
-# 	$(CC) $(CFLAGS) $(OBJS) -o main
-
-# caesar.o: src/caesar.c headers/caesar.h
-# 	$(CC) $(CFLAGS) -c caesar.c
-
-# vigenere.o: src/vigenere.c headers/vigenere.h
-# 	$(CC) $(CFLAGS) -c src/vigenere.c
-
-# clean:
-# 	rm -f *~ *.o sysstatd
-# Compiler and flags
-CC = clang
-CFLAGS = -Wall -Wextra -std=gnu2y -g -Iheaders
-DELCMD = del
-# Source and object files
+#Global uses of variables
 SRC = src/main.c src/bubble.c
 OBJ = $(SRC:.c=.o)
-DEL =  .\src\bubble.o  .\src\main.o
-OBJ1 = ./main.exe
+#/////////////////////////////////////////////////////////////////////////////////
+#Here goes the Linux commad section
+LINUXCC = gcc
+#Find the flags for gcc these below are clang flags
+#CFLAGS = -Wall -Wextra -std=gnu2y -g -Iheaders
+LINUXDELCMD = rm
+# Source and object files
+LINUXDEL =  ./src/bubble.o  ./src/main.o
+LINUXOBJ1 = ./main
 # Target executable
-TARGET = main
-TARGET1 = go
-all: $(TARGET)
+LINUXTARGET = mainl
+LINUXTARGET1 = gol
+LINUXCLEAN = cleanl
+#Build
+$(LINUXTARGET): $(OBJ)
+	$(LINUXCC) -o $@ $(OBJ)
+
+$(LINUXTARGET1): $(LINUXOBJ1)
+	$(LINUXOBJ1)
+
+$(LINUXCLEAN):
+	$(LINUXDELCMD) $(LINUXDEL)
 
 
-# Build executable
-$(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $(OBJ)
+#//////////////////////////////////////////////////////////////////////////////////
+#Here goes windows command section
 
-$(TARGET1): $(OBJ1)
+
+WINDOWSCC = clang
+WCFLAGS = -Wall -Wextra -std=gnu2y -g -Iheaders
+WINDOWSDELCMD = del
+# Source and object files
+WINDOWSDEL =  .\src\bubble.o  .\src\main.o
+WINDOWSOBJ1 = ./main.exe
+# Target executable
+WINDOWSTARGET = mainw
+WINDOWSTARGET1 = gow
+WINDOWSCLEAN = cleanw
+#
+#build
+$(WINDOWSTARGET): $(OBJ)
+	$(WINDOWSCC) $(WFLAGS) -o $@ $(OBJ)
+
+$(WINDOWSTARGET1): $(WINDOWSOBJ1)
 	$(OBJ1)
 
-clean:
-	$(DELCMD) $(DEL)
+$(WINDOWSCLEAN):
+	$(WINDOWSDELCMD) $(WINDOWSDEL)
+
+
