@@ -9,6 +9,8 @@ for LINUX
 "make gol" will build and run the code
 "make cleanl" will clean the object files in the src folder
 //////////
+
+
 for WINDOWS
 //////////
 "make mainw" will compile the code
